@@ -7,7 +7,7 @@ namespace DataValida.Exceptions.ConsoleApp
         static void Main(string[] args)
         {
             string strDia = "29", strMes = "02", strAno = "2021";
-            int intDia = 30, intMes = 06, intAno = 2020;           
+            int intDia = 29, intMes = 02, intAno = 2021;           
 
             try
             {

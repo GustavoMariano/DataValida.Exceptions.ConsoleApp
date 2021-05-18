@@ -65,44 +65,26 @@ namespace DataValida.Exceptions.ConsoleApp
         /// <exception cref=""></exception>
         public void StringToDate(string dia, string mes, string ano)
         {
-            int intDia = Convert.ToInt32(dia);
+            bool validacao;
+            int intDia; 
+            
+            validacao = Int32.TryParse(dia, out intDia);
+             if(validacao == false)
+                throw new ArgumentException("O dia informado é inválido!!");
+
             int intMes = Convert.ToInt32(mes);
+            validacao = Int32.TryParse(mes, out intMes);
+            if (validacao == false)
+                throw new ArgumentException("O mês informado é inválido!!");
+
             int intAno = Convert.ToInt32(ano);
+            validacao = Int32.TryParse(ano, out intAno);
+            if (validacao == false)
+                throw new ArgumentException("O ano informado é inválido!!");
 
             DateTime dataConvertida;
 
-            if (intAno >= 1 && intAno < 3000)
-            {
-                if (intMes == 1 || intMes == 3 || intMes == 5 || intMes == 7 || intMes == 8 || intMes == 10 || intMes == 12)
-                {
-                    if (intDia < 1 || intDia > 31)
-                        throw new ArgumentException("Dia informado é inválido!!");
-                    else
-                        dataConvertida = new DateTime(intAno, intMes, intDia);
-                }
-                else if (intMes == 2)
-                {
-                    bool ehAnoBissexto = DateTime.IsLeapYear(intAno);
-                    if (ehAnoBissexto == false)
-                    {
-                        if (intDia < 1 || intDia > 28)
-                            throw new ArgumentException("O ano informado não é bissexto, portanto fevereiro possui 28 dias!!");
-                        else
-                            dataConvertida = new DateTime(intAno, intMes, intDia);
-                    }
-                }
-                else if (intMes == 4 || intMes == 6 || intMes == 9 || intMes == 11)
-                {
-                    if (intDia < 1 || intDia > 30)
-                        throw new ArgumentException("Dia informado é inválido!!");
-                    else
-                        dataConvertida = new DateTime(intAno, intMes, intDia);
-                }
-                else
-                    throw new ArgumentException("O mês informado é inválido!!");
-            }
-            else
-                throw new ArgumentException("Ano informado está fora do escopo de validação (0001 ~ 3000)");
+            IntToDate(intDia, intMes, intAno);        
         }
     }
 }
