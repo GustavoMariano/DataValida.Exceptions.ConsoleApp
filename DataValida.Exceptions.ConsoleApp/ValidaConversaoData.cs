@@ -15,7 +15,7 @@ namespace DataValida.Exceptions.ConsoleApp
         {
             DateTime dataConvertida;
 
-            if (ano >= 1 && ano < 3000)
+            if (ano >= 1 && ano <= 3000)
             {
                 if (mes == 1 || mes == 3 || mes == 5 || mes == 7 || mes == 8 || mes == 10 || mes == 12)
                 {
